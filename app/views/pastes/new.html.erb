@@ -1,0 +1,17 @@
+<% @title = 'New Paste' %>
+
+<% form_for @paste do |f| %>
+  <%= hidden_field_tag :patch_style, 'moneywatch' %>
+  <script language="javascript">
+    document.getElementById('patch_style').value = 'monkeypatch';
+  </script>
+  
+  <div>
+    <div><%= f.label :code, 'Code:' %></div>
+    <%= f.text_area :code, :rows => 30, :cols => 100 %>
+  </div>
+  
+  <div>
+    <%= f.submit 'Paste!' %>
+  </div>
+<% end %>
