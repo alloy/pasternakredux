@@ -1,0 +1,7 @@
+--- 
+vendor/plugins/on_test_spec: 
+  local_branch: braid/svn/vendor/plugins/on-test-spec
+  type: svn
+  revision: 
+  squash: true
+  remote: https://fngtps.com/svn/rails-plugins/trunk/on_test_spec
