@@ -5,6 +5,7 @@ require 'test_help'
 require 'rubygems' rescue LoadError
 require 'mocha'
 require 'test/spec'
+require 'test/spec/rails'
 
 class Test::Unit::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method

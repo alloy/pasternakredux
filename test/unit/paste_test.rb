@@ -1,8 +1,7 @@
-require 'test_helper'
+require File.expand_path('../../test_helper', __FILE__)
 
-class PasteTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+describe "Paste" do
+  it "should initialize" do
+    
   end
 end
