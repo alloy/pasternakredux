@@ -1,0 +1,11 @@
+<% @title = "##{@paste.id} by paste.username" %>
+
+<h1>Paste by @paste.username</h1>
+
+<%= link_to 'All pastes', pastes_url %>
+
+<div>
+  <%= link_to 'Raw code', formatted_paste_url(@paste, :txt) %>
+  
+  <p><%= @paste.code %></p>
+</div>
