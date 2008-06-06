@@ -5,3 +5,9 @@ vendor/plugins/on_test_spec:
   revision: 
   squash: true
   remote: https://fngtps.com/svn/rails-plugins/trunk/on_test_spec
+vendor/plugins/authorization: 
+  local_branch: braid/svn/vendor/plugins/authorization
+  type: svn
+  revision: 
+  squash: true
+  remote: https://fngtps.com/svn/rails-plugins/trunk/authorization
