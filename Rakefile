@@ -29,12 +29,15 @@ namespace :uv do
     @languages_config ||= File.join(RAILS_ROOT, 'config', 'pasternak_languages.yml')
   end
 
-  desc "Copy the ultraviolet stylesheets to public"
+  desc "Copy the ultraviolet stylesheets to public and process them so the selectors get changed appropriately"
   task :copy_themes => :environment do
-    css = File.join(uv_dir, 'render', 'xhtml', 'files', 'css', '*.css')
     css_dir = File.join(RAILS_ROOT, 'public', 'stylesheets', 'themes')
     mkdir_p css_dir
-    sh "cp #{css} #{css_dir}"
+    
+    Dir.glob(File.join(uv_dir, 'render', 'xhtml', 'files', 'css', '*.css')).each do |file|
+      basename = File.basename(file)
+      File.open(File.join(css_dir, basename), 'w') { |f| f << File.read(file).gsub(/#{basename[0..-4]}/, 'highlighted_code') }
+    end
   end
 
   desc "Create a pasternak_languages.yml file in #{languages_config} which can be used to load languages into the db"
