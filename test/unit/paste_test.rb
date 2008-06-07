@@ -24,7 +24,14 @@ describe "Paste" do
     code.should.match /class.+Foo.+def.+foo/m
   end
   
-  xit "should remove any unnecessary indentation before saving" do
+  it "should remove any unnecessary indentation and leading/trailing whitespace before saving" do
+    code = %{
+      def foo
+        'foo'
+      end
+    }
     
+    paste = Paste.create :code => code, :language => languages(:ruby)
+    paste.code.should == "def foo\n  'foo'\nend"
   end
 end
