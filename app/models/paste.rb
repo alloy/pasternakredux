@@ -8,7 +8,7 @@ class Paste < ActiveRecord::Base
       language.name,
       true,
       'twilight'
-    ) #.sub(/^<pre class="twilight"/, '<pre class="highlighted_code"')
+    ).try(:sub, /^<pre class="twilight"/, '<pre class="highlighted_code"')
   end
   
   private

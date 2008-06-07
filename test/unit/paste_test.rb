@@ -20,7 +20,6 @@ describe "Paste" do
   
   it "should be able to return only a few lines with syntax highlighting" do
     code = pastes(:long_ruby_code).syntax_highlight(2)
-    puts code
     code.should.not.match /class.+Foo.+def.+foo.+foo/m
     code.should.match /class.+Foo.+def.+foo/m
   end

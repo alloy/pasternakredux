@@ -36,7 +36,7 @@ namespace :uv do
     
     Dir.glob(File.join(uv_dir, 'render', 'xhtml', 'files', 'css', '*.css')).each do |file|
       basename = File.basename(file)
-      File.open(File.join(css_dir, basename), 'w') { |f| f << File.read(file).gsub(/#{basename[0..-4]}/, 'highlighted_code') }
+      File.open(File.join(css_dir, basename), 'w') { |f| f << File.read(file).gsub(/#{basename[0..-4]}/, 'highlighted_code ') }
     end
   end
 
