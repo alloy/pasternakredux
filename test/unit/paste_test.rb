@@ -24,4 +24,8 @@ describe "Paste" do
     code.should.not.match /class.+Foo.+def.+foo.+foo/m
     code.should.match /class.+Foo.+def.+foo/m
   end
+  
+  xit "should remove any unnecessary indentation before saving" do
+    
+  end
 end

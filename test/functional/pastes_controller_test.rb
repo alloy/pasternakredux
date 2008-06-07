@@ -4,6 +4,7 @@ describe "PastesController" do
   tests PastesController
   
   before do
+    @paste = pastes(:short_ruby_code)
     @valid_params = { :code => 'def foo; puts "foo"; end', :language_id => languages(:ruby).id }
   end
   
@@ -38,9 +39,14 @@ describe "PastesController" do
   end
   
   it "should show a paste" do
-    paste = pastes(:short_ruby_code)
-    get :show, :id => paste.id
+    get :show, :id => @paste.id
     status.should.be :success
-    assigns(:paste).should == paste
+    assigns(:paste).should == @paste
+  end
+  
+  it "should return the raw code of a paste" do
+    get :show, :id => @paste.id, :format => 'txt'
+    status.should.be :success
+    response.body.should == @paste.code
   end
 end
