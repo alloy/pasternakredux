@@ -11,5 +11,10 @@
 <div>
   <%= link_to 'Raw code', formatted_paste_url(@paste, 'text') %>
   
+  <form action="/pastes/<%= @paste.id %>" method="get">
+    <div><%= label_tag 'theme', 'Theme:' %></div>
+    <%= select_tag 'theme', themes_options, :onchange => "this.form.submit();" %>
+  </form>
+  
   <p><%= @paste.syntax_highlight %></p>
 </div>
