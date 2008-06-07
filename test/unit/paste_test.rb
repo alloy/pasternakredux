@@ -12,9 +12,9 @@ describe "Paste" do
     paste.syntax_highlight
   end
   
-  it "should return the code with syntax highlighting applied" do
+  it "should return the code with syntax highlighting applied and class highlighted_code instead of twilight" do
     code = pastes(:long_ruby_code).syntax_highlight
-    code.should.match /^<pre class="twilight">.+<\/pre>$/m
+    code.should.match /^<pre class="highlighted_code">.+<\/pre>$/m
     code.should.match /class.+Foo.+def.+foo.+foo.+end.+end/m
   end
   
