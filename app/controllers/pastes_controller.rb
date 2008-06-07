@@ -17,7 +17,7 @@ class PastesController < ApplicationController
   def show
     @paste = Paste.find(params[:id])
     respond_to do |format|
-      format.html
+      format.html { @theme = params[:theme] || 'twilight' }
       format.text { render :text => @paste.code }
     end
   end

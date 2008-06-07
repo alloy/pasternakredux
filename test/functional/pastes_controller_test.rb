@@ -49,4 +49,14 @@ describe "PastesController" do
     status.should.be :success
     response.body.should == @paste.code
   end
+  
+  it "should by default use the twilight theme" do
+    get :show, :id => @paste.id
+    assigns(:theme).should == 'twilight'
+  end
+  
+  it "should show the given theme if one is specified" do
+    get :show, :id => @paste.id, :theme => 'amy'
+    assigns(:theme).should == 'amy'
+  end
 end
