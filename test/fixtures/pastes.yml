@@ -1,4 +1,6 @@
 short_ruby_code:
   code: def foo; "foo"; end
+  language: ruby
 long_ruby_code:
   code: "class Foo\n  def foo\n    'foo'\n  end\nend"
+  language: ruby

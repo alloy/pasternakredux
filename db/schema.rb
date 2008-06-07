@@ -9,14 +9,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080606181341) do
+ActiveRecord::Schema.define(:version => 20080607130537) do
 
-  create_table "pastes", :force => true do |t|
-    t.integer  "user_id"
-    t.text     "code",       :null => false
+  create_table "languages", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "pastes", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "code",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "language_id"
+  end
+
+  add_index "pastes", ["language_id"], :name => "index_pastes_on_language_id"
 
   create_table "users", :force => true do |t|
     t.string   "username",   :null => false
