@@ -1,2 +1,4 @@
-ruby_code:
+short_ruby_code:
   code: def foo; "foo"; end
+long_ruby_code:
+  code: "class Foo\n  def foo\n    'foo'\n  end\nend"

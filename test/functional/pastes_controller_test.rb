@@ -34,7 +34,7 @@ describe "PastesController" do
   end
   
   it "should show a paste" do
-    paste = pastes(:ruby_code)
+    paste = pastes(:short_ruby_code)
     get :show, :id => paste.id
     status.should.be :success
     assigns(:paste).should == paste
