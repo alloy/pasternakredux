@@ -3,6 +3,10 @@ require File.expand_path('../../test_helper', __FILE__)
 describe "PastesController" do
   tests PastesController
   
+  before do
+    @valid_params = { :code => 'def foo; puts "foo"; end', :language_id => languages(:ruby).id }
+  end
+  
   it "should show a new page" do
     get :new
     status.should.be :success
@@ -11,7 +15,7 @@ describe "PastesController" do
   
   it "should create a new paste with the correct token" do
     lambda {
-      post :create, :paste => { :code => 'def foo; puts "foo"; end' }, :patch_style => 'monkeypatch'
+      post :create, :paste => @valid_params, :patch_style => 'monkeypatch'
     }.should.differ('Paste.count', +1)
     
     paste = assigns(:paste)
@@ -21,14 +25,14 @@ describe "PastesController" do
   
   it "should NOT create a new paste without the correct token" do
     lambda {
-      post :create, :paste => { :code => 'def foo; puts "foo"; end' }, :patch_style => 'bla'
+      post :create, :paste => @valid_params, :patch_style => 'bla'
     }.should.not.differ('Paste.count')
     should.redirect_to new_paste_url
   end
   
   it "should NOT create a new paste without a token" do
     lambda {
-      post :create, :paste => { :code => 'def foo; puts "foo"; end' }, :patch_style => nil
+      post :create, :paste => @valid_params, :patch_style => nil
     }.should.not.differ('Paste.count')
     should.redirect_to new_paste_url
   end
