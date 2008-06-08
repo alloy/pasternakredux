@@ -1,16 +1,14 @@
 class ApplicationController < ActionController::Base
-  # helper :all # include all helpers, all the time
-
-  # See ActionController::RequestForgeryProtection for details
-  # Uncomment the :secret if you're not using the cookie session store
-  # protect_from_forgery # :secret => '8a0a65fac0f1b3e639a6349069f9e45c'
-  
   before_filter :find_authenticated, :block_access
   
   protected
 
   def find_authenticated
-    @authenticated = authenticate_with_http_basic { |username, password| User.authenticate(username, password) }
+    if session[:authenticated]
+      @authenticated = User.find_by_id(session[:authenticated])
+    else
+      @authenticated = authenticate_with_http_basic { |username, password| User.authenticate(username, password) }
+    end
   end
 
   # Access was forbidden to client requesting the resource. React to that appropriately. Note that this reply is very
