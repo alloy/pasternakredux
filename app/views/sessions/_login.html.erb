@@ -1,0 +1,19 @@
+<%= error_messages_for :user, :header_message => 'Invalid credentials' %>
+
+<div id="login">
+  <% form_for :session, :url => sessions_url do |f| %>
+    <div>
+      <div><label for="user_username">Username</label></div>
+      <div><%= text_field_tag "username", params[:username], :id => 'user_username' %></div>
+    </div>
+    
+    <div>
+      <div><label for="user_password">Password</label></div>
+      <div><%= password_field_tag "password", params[:password], :id => 'user_password' %></div>
+    </div>
+    
+    <div class="submit">
+      <%= submit_tag "Login" %>
+    </div>
+  <% end %>
+</div>
